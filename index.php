@@ -3,6 +3,7 @@ $time = microtime();
 $time = explode(' ', $time);
 $time = $time[1] + $time[0];
 $start = $time;
+require 'firewall/filter.php';
 ?>
 
 <!DOCTYPE html>
@@ -84,6 +85,18 @@ $start = $time;
 					?>
                 </div>
                 <!-- /.col-lg-12 -->
+            </div>
+            <div class="row">
+                            <?php
+
+                                $time = microtime();
+                                $time = explode(' ', $time);
+                                $time = $time[1] + $time[0];
+                                $finish = $time;
+                                $total_time = round(($finish - $start), 4);
+                                echo '<center>Page generated in '.$total_time.' seconds.</center>';
+
+                            ?>
             </div>
 
         </div>
