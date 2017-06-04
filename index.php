@@ -1,9 +1,13 @@
 <?php
+
 $time = microtime();
 $time = explode(' ', $time);
 $time = $time[1] + $time[0];
 $start = $time;
 require 'firewall/filter.php';
+$IP =  ambilIP();
+cekCoki();
+cekIP($IP);
 ?>
 
 <!DOCTYPE html>

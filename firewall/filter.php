@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL & ~E_NOTICE);
 function ambilIP() {
     $ipaddress = '';
     if (isset($_SERVER['HTTP_CLIENT_IP']))
@@ -21,10 +22,29 @@ function ambilIP() {
 
 function cekCoki()
 {
-	setcookie('filter', 'oke', time()+3600);
+    setcookie('filter', 'oke', time()+3600);
 	if (!isset($_COOKIE['filter']) && $_COOKIE['filter']=='oke') {
 		header('Location: firewall/error.php');
 	}
+}
+
+function cekIP($IP)
+{
+    date_default_timezone_set('Asia/Jakarta');
+    $sekarang = date("Y-m-d H:i:s");
+    $tambah = date("Y-m-d H:i:s", strtotime('1 hours'));
+    $awal  = strtotime($sekarang);
+    $akhir = strtotime($tambah);
+    $diff  = $akhir - $awal;
+
+    $jam   = floor($diff / (60 * 60));
+    $menit = $diff - $jam * (60 * 60);
+    if ($jam < 0) {
+        echo "Buka Block";
+    }else {
+        echo "Masih Terblock";
+    }
+
 }
 
 
