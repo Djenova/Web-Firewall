@@ -6,9 +6,9 @@
                         <li>
                             <a href="?p=command"><i class="fa fa-fighter-jet fa-fw"></i> Command Injection</a>
                         </li>
-                        <li>
+                        <!--<li>
                             <a href="?p=CSRF"><i class="fa fa-warning fa-fw"></i> CSRF</a>
-                        </li>
+                        </li>-->
                         <!--<li>
                             <a href="?p=filei"><i class="fa fa-file fa-fw"></i> File Inclution</a>
                         </li>-->
