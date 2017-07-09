@@ -1,6 +1,17 @@
 <?php
 		echo "Future Error Page";
 
-		echo set_include_path(get_include_path().":"."/path/to/new/folder");
+		if (isset($_POST['e'])) {
+			$galat = $_POST['e'];
+			switch ($galat) {
+				case '1':
+					# code...
+					break;
+
+				default:
+					# code...
+					break;
+			}
+		}
 
 ?>

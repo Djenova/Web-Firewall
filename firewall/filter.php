@@ -9,10 +9,6 @@ define('SITE_ROOT', __DIR__);
 class filter
 {
 
-    function __construct()
-    {
-
-    }
     public function ambilIP() {
     $ipaddress = '';
     if (isset($_SERVER['HTTP_CLIENT_IP']))
@@ -41,31 +37,17 @@ class filter
             }
     }
 
-    public function cekIP($IP)
+    public function daftarHitam()
     {
-        $query = "SELECT * FROM blacklist WHERE blacklist.IPblaclist = '$IP'";
-        $stmt = $this->db->prepare($query);
-        $stmt -> execute();
-        $data = $stmt -> fetch(PDO::FETCH_ASSOC);
-        date_default_timezone_set('Asia/Jakarta');
-        $sekarang = date("Y-m-d H:i:s");
-        $tambah = date("Y-m-d H:i:s", strtotime('1 hours'));
-        $awal  = strtotime($sekarang);
-        $akhir = strtotime($data['waktuBlacklist']);
-        $diff  = $akhir - $awal;
-
-        $jam   = floor($diff / (60 * 60));
-        $menit = $diff - $jam * (60 * 60);
-        if ($jam < 0) {
-        /*debug
-          echo "Buka Block";
-          echo "<br>".$sekarang;
-          echo "<br>".$data['waktuBlacklist'];*/
-        }else {
-         header('Location: firewall/error.php');
-        }
+      $lines = preg_split('/\r\n|\n|\r/', trim(file_get_contents(''.__DIR__.'/logs/blacklist/Blokir_Tanggal-'.$this->Tanggal($jam = FALSE).'.txt')));
+      $total = array_count_values($lines);
+      if ($total[$this->ambilIP()] == 5) {
+        header('Location: firewall/error.php');
+      }
 
     }
+
+
 
     public function GETcek()
     {
@@ -73,7 +55,8 @@ class filter
             $get = $isi;
             $_GET[$name] = $isi;
             /*debug */
-            print_r($get);
+            //print_r($get);
+            return $get;
         }
     }
 
@@ -88,10 +71,11 @@ class filter
         }
     }
 
-    public function XSScek($data)
+    public function XSScek($dataPost, $dataGet)
     {
-          $dataFilter = htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
-      if ($data != $dataFilter) {
+          $dataFilterPost = htmlspecialchars($dataPost, ENT_QUOTES, 'UTF-8');
+          $dataFilterGet = htmlspecialchars($dataGet, ENT_QUOTES, 'UTF-8');
+      if (($dataPost != $dataFilter)||($dataGet != $dataFilterGet)) {
         $this->TulisLog("XSS/SQLi",$this->ambilIP());
         header('Location: firewall/error.php');
      }
@@ -122,10 +106,12 @@ class filter
 $filter = new filter();
 $IP =  $filter -> ambilIP();
 $filter -> cekCoki();
+$filter->daftarHitam();
 //$filter -> cekIP($IP);
 //$filter -> GETcek();
+$dataGet = $filter -> GETcek();
 $dataPost = $filter ->POSTcek();
-$filter-> XSScek($dataPost);
+$filter-> XSScek($dataPost, $dataGet);
 
 
 ?>
