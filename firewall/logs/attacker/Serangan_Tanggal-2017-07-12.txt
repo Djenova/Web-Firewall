@@ -15,3 +15,4 @@ XSS/SQLi|192.168.1.9|2017-07-12 04:21:18|/web-firewall/?p=xss1
 XSS/SQLi|192.168.1.9|2017-07-12 04:37:48|/web-firewall/?p=command
 XSS/SQLi|192.168.1.9|2017-07-12 04:38:15|/web-firewall/?p=command
 XSS/SQLi|192.168.1.9|2017-07-12 04:38:37|/web-firewall/?p=command
+Command Injection|127.0.0.1|2017-07-12 05:36:11|/Web-Firewall/?p=command

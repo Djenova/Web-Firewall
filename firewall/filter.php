@@ -126,18 +126,30 @@ class filter
           $_SESSION['start']=time();
       }
     }
+
+    public function filterPerintah($dataPost,$dataGet)
+    {
+      $dataFilterGet = escapeshellcmd($dataGet);
+      $dataFilterPost = escapeshellcmd($dataPost);
+      if (($dataPost != $dataFilterPost)||($dataGet != $dataFilterGet)) {
+        $this->TulisLog("Command Injection",$this->ambilIP());
+        header('Location: firewall/error.php');
+      }
+    //echo $dataGet."<br>".$dataFilterGet;
+    }
 }
 $filter = new filter();
 $IP =  $filter -> ambilIP();
-$filter -> cekCoki();
-$filter->daftarHitam();
+//$filter -> cekCoki();
+//$filter->daftarHitam();
 //$filter -> cekIP($IP);
 //$filter -> GETcek();
 $dataGet = $filter -> GETcek();
 $dataPost = $filter ->POSTcek();
-$filter-> XSScek($dataPost, $dataGet);
-$filter ->antiBruteForce(1000);
-session_destroy();
+//$filter-> XSScek($dataPost, $dataGet);
+//$filter ->antiBruteForce(1000);
+$filter->filterPerintah($dataPost, $dataGet);
+//session_destroy();
 
 
 ?>

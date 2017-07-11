@@ -1,18 +1,7 @@
 <?php
-$test = 'stuff bash interprets, space: # & ; ` | * ? ~ < > ^ ( ) [ ] { } $ \ \x0A \xFF. \' " %'.PHP_EOL.
-        'stuff bash interprets, no space: #&;`|*?~<>^()[]{}$\\x0A\xFF.\'\"%'.PHP_EOL.
-        'stuff bash interprets, with leading backslash: \# \& \; \` \| \* \? \~ \< \> \^ \( \) \[ \] \{ \} \$ \\\ \\\x0A \\\xFF. \\\' \" \%'.PHP_EOL.
-        'printf codes: % \ (used to form %.0#-*+d, or \\ \a \b \f \n \r \t \v \" \? \062 \0062 \x032 \u0032 and \U00000032)';
 
-echo "These are the strings we are testing with:".PHP_EOL.$test.PHP_EOL;
-$cmd = $test;
-//$cmd = str_replace(array('\\', '%'), array('\\\\', '%%'), $test);
-$cmd = escapeshellarg($cmd);
+echo shell_exec("whoami");
 
-echo PHP_EOL."This is the output using the escaping mechanism given:".PHP_EOL;
-echo "printf $cmd | cat".PHP_EOL;
-
-echo PHP_EOL."They should match exactly".PHP_EOL;
 //session_destroy();
 /* Nice Encrypt
 //Key
