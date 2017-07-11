@@ -10,15 +10,24 @@
     <div class="panel-body">
     	<div class="row">
             <div class="col-lg-6">
-            	<form role="form" method="POST" action="?p=bruteforce">
+            	<form role="form" method="POST" action="?p=command">
             		<div class="form-group">
-                        <label>Ping</label>
-                        <input class="form-control" type="text" name="nama">
-                        <p class="help-block">Masukan Alamat IP</p>
+                        <label>Command</label>
+                        <input class="form-control" type="text" name="command">
+                        <p class="help-block">Masukan Perintah</p>
                     </div>
 
                     <button type="submit" value="masuk" name="masuk" class="btn btn-default">Masuk</button>
             	</form>
+              <?php
+                if (isset($_POST['command'])) {
+                  $cmd = $_POST['command'];
+                  //$cmd = escapeshellarg($_POST['command']);
+                  echo "<pre>";
+                  echo shell_exec($cmd);
+                  echo "</pre>";
+                }
+               ?>
             </div>
         </div>
     </div>

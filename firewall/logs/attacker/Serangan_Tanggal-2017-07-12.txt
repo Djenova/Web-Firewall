@@ -1,0 +1,17 @@
+BruteForce|192.168.1.9|2017-07-12 03:05:09
+BruteForce|192.168.1.9|2017-07-12 03:05:23
+XSS/SQLi|192.168.1.9|2017-07-12 03:09:01|/web-firewall/?p=bruteforce
+XSS/SQLi|192.168.1.9|2017-07-12 04:02:04|/web-firewall/?p=command
+XSS/SQLi|192.168.1.9|2017-07-12 04:02:14|/web-firewall/?p=command
+XSS/SQLi|192.168.1.9|2017-07-12 04:06:15|/web-firewall/?p=command
+XSS/SQLi|192.168.1.9|2017-07-12 04:09:31|/web-firewall/?p=command
+XSS/SQLi|192.168.1.9|2017-07-12 04:10:22|/web-firewall/?p=bruteforce
+XSS/SQLi|192.168.1.9|2017-07-12 04:14:41|/web-firewall/?p=xss1
+XSS/SQLi|192.168.1.9|2017-07-12 04:14:53|/web-firewall/?p=bruteforce
+XSS/SQLi|192.168.1.9|2017-07-12 04:14:59|/web-firewall/?p=bruteforce
+XSS/SQLi|192.168.1.9|2017-07-12 04:15:14|/web-firewall/?p=xss1
+XSS/SQLi|192.168.1.9|2017-07-12 04:21:15|/web-firewall/?p=xss1
+XSS/SQLi|192.168.1.9|2017-07-12 04:21:18|/web-firewall/?p=xss1
+XSS/SQLi|192.168.1.9|2017-07-12 04:37:48|/web-firewall/?p=command
+XSS/SQLi|192.168.1.9|2017-07-12 04:38:15|/web-firewall/?p=command
+XSS/SQLi|192.168.1.9|2017-07-12 04:38:37|/web-firewall/?p=command

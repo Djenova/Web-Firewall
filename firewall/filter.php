@@ -1,5 +1,6 @@
 <?php
 //require_once 'dbconfig.php';
+session_start();
 error_reporting(E_ALL & ~E_NOTICE);
 date_default_timezone_set('Asia/Jakarta');
 define('SITE_ROOT', __DIR__);
@@ -39,8 +40,10 @@ class filter
 
     public function daftarHitam()
     {
-      $lines = preg_split('/\r\n|\n|\r/', trim(file_get_contents(''.__DIR__.'/logs/blacklist/Blokir_Tanggal-'.$this->Tanggal($jam = FALSE).'.txt')));
-      $total = array_count_values($lines);
+      if (file_exists(''.__DIR__.'/logs/blacklist/Blokir_Tanggal-'.$this->Tanggal($jam = FALSE).'.txt')) {
+        $lines = preg_split('/\r\n|\n|\r/', trim(file_get_contents(''.__DIR__.'/logs/blacklist/Blokir_Tanggal-'.$this->Tanggal($jam = FALSE).'.txt')));
+        $total = array_count_values($lines);
+      }
       if ($total[$this->ambilIP()] == 5) {
         header('Location: firewall/error.php');
       }
@@ -75,7 +78,7 @@ class filter
     {
           $dataFilterPost = htmlspecialchars($dataPost, ENT_QUOTES, 'UTF-8');
           $dataFilterGet = htmlspecialchars($dataGet, ENT_QUOTES, 'UTF-8');
-      if (($dataPost != $dataFilter)||($dataGet != $dataFilterGet)) {
+      if (($dataPost != $dataFilterPost)||($dataGet != $dataFilterGet)) {
         $this->TulisLog("XSS/SQLi",$this->ambilIP());
         header('Location: firewall/error.php');
      }
@@ -95,12 +98,33 @@ class filter
 
     public function TulisLog($jenis, $IP)
     {
-      $simpan = $jenis."|".$IP."|".$this->Tanggal($jam = TRUE);
+      $simpan = $jenis."|".$IP."|".$this->Tanggal($jam = TRUE)."|".$_SERVER['REQUEST_URI'];
       $file = __DIR__."/logs/attacker/Serangan_Tanggal-".$this->Tanggal($jam = FALSE).".txt" ;
       $fileBlock = __DIR__."/logs/blacklist/Blokir_Tanggal-".$this->Tanggal($jam = FALSE).".txt" ;
       file_put_contents($file, $simpan . PHP_EOL, FILE_APPEND);
       file_put_contents($fileBlock, $IP . PHP_EOL, FILE_APPEND);
 
+    }
+    public function antiBruteForce($maks)
+    {
+      if (isset($_SESSION['count'])) {
+        $_SESSION['count'] +=1;
+        $now = time();
+        if ((isset($_SESSION['expire']) && ($_SESSION['expire'] <= $now ))) {
+          session_destroy();
+          $_SESSION['count']=0;
+        }
+        if ($_SESSION['count']>=$maks) {
+          if (!$_SESSION['expire']) {
+            $_SESSION['expire']  = $_SESSION['start']+(20);
+            $this->TulisLog("BruteForce",$this->ambilIP());
+          }
+          header('Location: firewall/error.php');
+        }
+      } else {
+        $_SESSION['count']=1;
+          $_SESSION['start']=time();
+      }
     }
 }
 $filter = new filter();
@@ -112,6 +136,8 @@ $filter->daftarHitam();
 $dataGet = $filter -> GETcek();
 $dataPost = $filter ->POSTcek();
 $filter-> XSScek($dataPost, $dataGet);
+$filter ->antiBruteForce(1000);
+session_destroy();
 
 
 ?>
