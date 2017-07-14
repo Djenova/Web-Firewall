@@ -10,7 +10,7 @@
     <div class="panel-body">
     	<div class="row">
             <div class="col-lg-6">
-            	<form role="form" method="POST" action="?p=bruteforce">
+            	<form role="form" method="POST" action="?p=sqli">
             		<div class="form-group">
                         <label>ID Pengguna</label>
                         <input class="form-control" type="text" name="nama">
@@ -18,6 +18,16 @@
                     </div>
                     <button type="submit" value="masuk" name="masuk" class="btn btn-default">Masuk</button>
             	</form>
+              <?php
+                if (isset($_POST['masuk'])) {
+
+                  if ($_POST['nama'] == "'") {
+                    echo "SQLi Vuln";
+                  } else {
+                    echo "Coba lagi";
+                  }
+                }
+                ?>
             </div>
         </div>
     </div>

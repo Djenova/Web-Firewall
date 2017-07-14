@@ -25,7 +25,12 @@
             	</form>
             	<?php
             		if (isset($_POST['masuk'])) {
-            			echo "Nama = ".$_POST['nama']." Sandi = ".$_POST['password'];
+
+                  if (($_POST['nama'] == "admin") && ($_POST['password'] = "123abc")) {
+                    echo "Berhasil Login";
+                  } else {
+                    echo "Username / Password Salah";
+                  }
             		}
             	?>
             </div>

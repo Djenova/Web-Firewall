@@ -14,7 +14,7 @@
             		<div class="form-group">
                         <label>Command</label>
                         <input class="form-control" type="text" name="command">
-                        <p class="help-block">Masukan Perintah</p>
+                        <p class="help-block">Masukan Alamat yang akan di ping</p>
                     </div>
 
                     <button type="submit" value="masuk" name="masuk" class="btn btn-default">Masuk</button>
@@ -22,9 +22,8 @@
               <?php
                 if (isset($_POST['command'])) {
                   $cmd = $_POST['command'];
-                  //$cmd = escapeshellarg($_POST['command']);
                   echo "<pre>";
-                  echo shell_exec($cmd);
+                  echo shell_exec("ping ".$cmd);
                   echo "</pre>";
                 }
                ?>

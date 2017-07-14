@@ -10,10 +10,10 @@
     <div class="panel-body">
     	<div class="row">
             <div class="col-lg-6">
-            	<form role="form" method="POST" action="?p=bruteforce">
+            	<form role="form" method="POST" action="?p=fileu" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>Pilih Berkas</label>
-                        <input type="file">
+                        <input type="file" name="fileupload">
                     </div>
                     <button type="submit" value="masuk" name="masuk" class="btn btn-default">Masuk</button>
             	</form>

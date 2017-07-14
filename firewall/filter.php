@@ -1,5 +1,5 @@
 <?php
-//require_once 'dbconfig.php';
+require_once 'conf.php';
 session_start();
 error_reporting(E_ALL & ~E_NOTICE);
 date_default_timezone_set('Asia/Jakarta');
@@ -50,8 +50,6 @@ class filter
 
     }
 
-
-
     public function GETcek()
     {
         foreach ($_GET as $name => $isi) {
@@ -72,6 +70,31 @@ class filter
             //print_r($post);
             return $post;
         }
+    }
+
+    public function FILEScek()
+    {
+        foreach ($_FILES as $fil => $b[][]) {
+          $up_name = $_FILES[$fil]['name'];
+
+          //echo $up_name."<br>".$uploaded;
+          return $up_name;
+        }
+
+
+    }
+
+    public function filterFile($up_name)
+    {
+      if ($up_name != NULL) {
+        $uploaded = substr($up_name,strrpos($up_name, '.')+1);
+        $x = array("jpg", "Jpeg", "gif", "png");
+        if (in_array($uploaded,$x) != true) {
+          $this->TulisLog("Arbitrary File Upload",$this->ambilIP());
+          header('Location: firewall/error.php');
+        }
+      }
+
     }
 
     public function XSScek($dataPost, $dataGet)
@@ -116,7 +139,7 @@ class filter
         }
         if ($_SESSION['count']>=$maks) {
           if (!$_SESSION['expire']) {
-            $_SESSION['expire']  = $_SESSION['start']+(20);
+            $_SESSION['expire']  = $_SESSION['start']+(10);
             $this->TulisLog("BruteForce",$this->ambilIP());
           }
           header('Location: firewall/error.php');
@@ -140,15 +163,13 @@ class filter
 }
 $filter = new filter();
 $IP =  $filter -> ambilIP();
-//$filter -> cekCoki();
-//$filter->daftarHitam();
-//$filter -> cekIP($IP);
-//$filter -> GETcek();
+$dataFiles = $filter->FILEScek();
 $dataGet = $filter -> GETcek();
 $dataPost = $filter ->POSTcek();
-//$filter-> XSScek($dataPost, $dataGet);
-//$filter ->antiBruteForce(1000);
+$filter-> XSScek($dataPost, $dataGet);
+$filter ->antiBruteForce($config->maxbrute);
 $filter->filterPerintah($dataPost, $dataGet);
+$filter->filterFile($dataFiles);
 //session_destroy();
 
 
