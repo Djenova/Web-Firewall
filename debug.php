@@ -1,20 +1,28 @@
 <?php
 
-echo shell_exec("whoami");
+@$myObj->name = "John";
+$myObj->age = 30;
+$myObj->city = "New York";
+$myObj->city = "New York";
+
+$myJSON = json_encode($myObj);
+
+//echo $myJSON;
+
 
 //session_destroy();
-/* Nice Encrypt
+ //Nice Encrypt
 //Key
-$key = 'EaaJgaD0uFDEg7tpvMOqKfAQ46B qi8Va';
+$key = 'EaaJgaD0uFDEg7tpvMOqKfAQ46Bqi8Va';
 
 //To Encrypt:
-$encrypted = mcrypt_encrypt(MCRYPT_RIJNDAEL_256, $key, 'Password', MCRYPT_MODE_ECB);
+$encrypted = mcrypt_encrypt(MCRYPT_RIJNDAEL_256, $key, $data, MCRYPT_MODE_ECB);
 
 //To Decrypt:
 $decrypted = mcrypt_decrypt(MCRYPT_RIJNDAEL_256, $key, $encrypted, MCRYPT_MODE_ECB);
 echo $encrypted;
 echo "<br>";
-echo $decrypted; */
+echo $decrypted;
 
 /* Unused Code
 public function cekIP($IP)

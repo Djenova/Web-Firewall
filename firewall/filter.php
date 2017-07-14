@@ -163,6 +163,8 @@ class filter
 }
 $filter = new filter();
 $IP =  $filter -> ambilIP();
+$filter -> cekCoki();
+$filter->daftarHitam();
 $dataFiles = $filter->FILEScek();
 $dataGet = $filter -> GETcek();
 $dataPost = $filter ->POSTcek();
