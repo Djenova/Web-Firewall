@@ -18,14 +18,17 @@ class Admin extends Config
       return count($lines);
     } elseif ($type == "blacklist") {
       $lines = preg_split('/\r\n|\n|\r/', trim(file_get_contents(''.__DIR__.'/logs/blacklist/Blokir_Tanggal-'.$date.'.txt')));
-      return count($lines);
+      $unik = $this->MakeUnique($lines);
+      return count($unik);
     } elseif ($type == "blacklistall") {
       $dir = __DIR__."/logs/blacklist/";
         $files = array_slice(scandir($dir), 2);
         for ($i=0; $i < count($files) ; $i++) {
           $lines[$i] =preg_split('/\r\n|\n|\r/', trim(file_get_contents(__DIR__.'/logs/blacklist/'.$files[$i])));
         };
-        return array_sum(array_map("count", $lines));
+        $unik = $this->MakeUnique($lines);
+        $merge = $this->MakeOne($unik);
+        return array_sum(array_map("count", $merge));
     } elseif ($type = "attackerall") {
       $dir = __DIR__."/logs/attacker/";
       $files = array_slice(scandir($dir), 2);
