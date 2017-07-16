@@ -52,7 +52,7 @@ require 'firewall/filter.php';
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
-                 
+
                 <a class="navbar-brand" href="index.php">Kelinci Percobaan</a>
             </div>
             <!-- /.navbar-header -->

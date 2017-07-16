@@ -10,6 +10,10 @@ class Config
   public $maxbrute;
   public $allowEkstensi;
 
+  public function __construct()
+  {
+    self::bacaConfig();
+  }
 
   public function setConfig($username,$password,$maxbrute,$allowEkstensi)
   {

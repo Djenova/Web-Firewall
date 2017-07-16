@@ -113,7 +113,7 @@ class filter
           $date = date('Y-m-d');
           return $date;
         } else {
-          $date = date('Y-m-d H:i:s');
+          $date = date('Y-m-d|H:i:s');
           return $date;
         }
 

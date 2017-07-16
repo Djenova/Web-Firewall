@@ -1,7 +1,20 @@
-Command Injection|::1|2017-07-15 00:44:08|/web-firewall/?p=command
-Arbitrary File Upload|::1|2017-07-15 01:11:25|/web-firewall/?p=fileu
-Command Injection|::1|2017-07-15 01:14:55|/web-firewall/?p=command
-XSS/SQLi|::1|2017-07-15 01:17:58|/web-firewall/?p=sqli
-Command Injection|::1|2017-07-15 01:17:58|/web-firewall/?p=sqli
-BruteForce|::1|2017-07-15 03:20:57|/web-firewall/
-BruteForce|::1|2017-07-15 03:25:09|/web-firewall/?p=fileu
+Command Injection|::1|2017-07-15|00:44:08|/web-firewall/?p=command
+Arbitrary File Upload|::1|2017-07-15|01:11:25|/web-firewall/?p=fileu
+Command Injection|::1|2017-07-15|01:14:55|/web-firewall/?p=command
+XSS/SQLi|::1|2017-07-15|01:17:58|/web-firewall/?p=sqli
+Command Injection|::1|2017-07-15|01:17:58|/web-firewall/?p=sqli
+BruteForce|::1|2017-07-15|03:20:57|/web-firewall/
+BruteForce|::1|2017-07-15|03:25:09|/web-firewall/?p=fileu
+BruteForce|::1|2017-07-15|03:20:57|/web-firewall/
+BruteForce|::1|2017-07-15|03:25:09|/web-firewall/?p=fileu
+Command Injection|::1|2017-07-15|00:44:08|/web-firewall/?p=command
+Arbitrary File Upload|::1|2017-07-15|01:11:25|/web-firewall/?p=fileu
+Command Injection|::1|2017-07-15|01:14:55|/web-firewall/?p=command
+XSS/SQLi|::1|2017-07-15|01:17:58|/web-firewall/?p=sqli
+Command Injection|::1|2017-07-15|01:17:58|/web-firewall/?p=sqli
+XSS/SQLi|::1|2017-07-15|01:17:58|/web-firewall/?p=sqli
+Command Injection|::1|2017-07-15|01:17:58|/web-firewall/?p=sqli
+BruteForce|::1|2017-07-15|03:20:57|/web-firewall/
+BruteForce|::1|2017-07-15|03:25:09|/web-firewall/?p=fileu
+XSS/SQLi|::1|2017-07-15|21:54:54|/web-firewall/?p=sqli
+Command Injection|::1|2017-07-15|21:54:54|/web-firewall/?p=sqli
