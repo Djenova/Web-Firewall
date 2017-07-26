@@ -1,0 +1,2 @@
+XSS/SQLi|::1|2017-07-26|12:12:34|/web-firewall/?p=sqli
+Command Injection|::1|2017-07-26|12:12:34|/web-firewall/?p=sqli

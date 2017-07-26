@@ -75,7 +75,7 @@ class Admin extends Config
         echo "<tr>
                   <td>".$i."</td>
                   <td>".$file."</td>
-                  <td>Hapus | Unduh</td>
+                  <td><a href=?p=log&j=a&hapus=".$file.">  Hapus </a> | <a href=logs/attacker/".$file." target='_blank'> Unduh</a></td>
               </tr>";
       }
     } elseif ($type =="b") {
@@ -87,7 +87,7 @@ class Admin extends Config
           echo "<tr>
                     <td>".$i."</td>
                     <td>".$file."</td>
-                    <td>Hapus | Unduh</td>
+                    <td><a href=?p=log&j=b&hapus=".$file." > Hapus </a>| <a href=logs/blacklist/".$file." target='_blank'> Unduh </a></td>
                 </tr>";
         }
     }

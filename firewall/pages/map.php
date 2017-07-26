@@ -10,7 +10,7 @@
   width: 100%;
 }
 </style>
-<h3>IP Location</h3>
+<h3>Lokasi IP Penyerang</h3>
 <div id="map-canvas"></div>
 
 <script>
@@ -27,13 +27,8 @@ var IPCollection=[
 			center: {lat: 2.8, lng: -187.3},
       mapTypeId: 'terrain'
 		});
-
-
-
  		IPCollection.forEach(function(ipplace) {
  			var marker=new google.maps.Marker({position:{lat:ipplace.latitude, lng:ipplace.longitude}, clickable:true, map:map, animation:google.maps.Animation.DROP });
-
-
  			google.maps.event.addListener(marker,'click',function() {
 		 	var infowindow = new google.maps.InfoWindow();
 		 	var infolist=jQuery('<ul></ul>');
@@ -45,11 +40,6 @@ var IPCollection=[
 			map.panTo(marker.getPosition());
 		 	});
  		});
-
-
-
 	}
-
 	google.maps.event.addDomListener(window, 'load', initialize);
-
 </script>

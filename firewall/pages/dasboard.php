@@ -37,7 +37,7 @@
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge"><?php echo $admin->CountLog("blacklist") ?></div>
-                        <div>IP terblokir hari ini</div>
+                        <div>IP Terblokir Hari Ini</div>
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge"><?php echo $admin->CountLog("blacklistall") ?></div>
-                        <div>IP terblokir sepanjang masa</div>
+                        <div>Total IP terblokir</div>
                     </div>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge"><?php echo $admin->CountLog("attackerall") ?></div>
-                        <div>Total Serangan Sepanjang Masa</div>
+                        <div>Total Serangan</div>
                     </div>
                 </div>
             </div>

@@ -126,7 +126,6 @@ class filter
       $fileBlock = __DIR__."/logs/blacklist/Blokir_Tanggal-".$this->Tanggal($jam = FALSE).".txt" ;
       file_put_contents($file, $simpan . PHP_EOL, FILE_APPEND);
       file_put_contents($fileBlock, $IP . PHP_EOL, FILE_APPEND);
-
     }
     public function antiBruteForce($maks)
     {
